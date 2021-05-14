@@ -66,3 +66,8 @@ class Cart(object):
         Count all items in the cart.
         """
         return sum(item['quantity'] for item in self.cart.values())
+
+    def clear(self):
+        # remove cart from session
+        del self.session[settings.CART_SESSION_ID]
+        self.save()
